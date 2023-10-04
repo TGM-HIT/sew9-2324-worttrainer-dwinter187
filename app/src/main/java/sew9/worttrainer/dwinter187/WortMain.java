@@ -1,7 +1,9 @@
 package sew9.worttrainer.dwinter187;
 
+import java.net.URL;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,9 +19,9 @@ public class WortMain {
     public static void main(String[] args) {
 
         //Worteintrag
-        WortEintrag worteintrag1 = new WortEintrag("eins", "https://www.eins.com");
-        WortEintrag worteintrag2 = new WortEintrag("zwei", "http://www.zwei.com");
-        WortEintrag worteintrag3 = new WortEintrag("drei", "http://www.drei.com");
+        WortEintrag worteintrag1 = new WortEintrag("fotograph", "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80");
+        WortEintrag worteintrag2 = new WortEintrag("auge", "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg");
+        WortEintrag worteintrag3 = new WortEintrag("baum", "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg");
 
         //Wortliste
         WortListe wortliste1 = new WortListe();
@@ -33,13 +35,22 @@ public class WortMain {
         Random r = new Random();
         boolean wortRichtig = true;
         boolean spielBeendet = false;
+        ImageIcon image;
+        String antwort = "";
 
         JOptionPane.showMessageDialog(null, "Herzlich Willkommen zu meinem Worttrainer");
         while(!spielBeendet) {
             WortEintrag neuesWort = trainer.getWortListe().getListe()[r.nextInt(trainer.getWortListe().getListe().length)];
             
             do {
-                String antwort = JOptionPane.showInputDialog(null, "Welches Bild ist das? "+neuesWort.getUrl());
+                try {
+                    image = new ImageIcon(new URL(neuesWort.getUrl()));
+                    JOptionPane.showMessageDialog(null, "Merk dir dieses Bild genau", "Display Image", JOptionPane.INFORMATION_MESSAGE, image);
+                    antwort = JOptionPane.showInputDialog(null, "Was war das Bild?");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null,"Fehler");
+                }
+                
                 if(antwort.equals("")){
                     spielBeendet = true;
                     break;
