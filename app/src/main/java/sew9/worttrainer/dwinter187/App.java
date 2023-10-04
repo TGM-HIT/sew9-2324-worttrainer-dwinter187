@@ -1,10 +1,10 @@
 package sew9.worttrainer.dwinter187;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  * baut die Klassen WortEintrag, WortTrainer und WortListe ein 
@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * 
  * @version 14.11.21
  */
-public class WortMain {
+public class App {
     /**
      * baut die Klassen WortEintrag, WortTrainer und WortListe ein 
      */
@@ -31,6 +31,12 @@ public class WortMain {
 
         //Worttrainer
         WortTrainer trainer = new WortTrainer(wortliste1);
+        SpeichernUndLaden sul = new SpeichernUndLaden(trainer);
+        try {
+            sul.laden();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Fehler bei laden");
+        }
 
         Random r = new Random();
         boolean wortRichtig = true;
@@ -52,6 +58,11 @@ public class WortMain {
                 }
                 
                 if(antwort.equals("")){
+                    try {
+                        sul.speichern();
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Fehler bei speichern");
+                    }
                     spielBeendet = true;
                     break;
                 }

@@ -13,59 +13,54 @@ import java.io.IOException;
  * @version 04-12-2021
  */
 public class SpeichernUndLaden{
+	public WortTrainer wortTrainer;
+	public SpeichernUndLaden(WortTrainer wortTrainer){
+		this.wortTrainer = wortTrainer;
+	}
+
     /**
      * speichert die Worteintraege und die Statistik dazu in der angegebenen Datei
      * @param filename Das File in das alles gespeichert werden soll
      * @param worttrainer Die Worteintraege und die Statistik
      * @throws IOException
      */
-    public static void speichern(String filename, WortTrainer worttrainer) throws IOException {
+    public void speichern(String filename) throws IOException {
 		File file = new File(filename);
 		BufferedWriter writer = null;
-		WortEintrag[] wortliste = worttrainer.getWortListe().getListe();
-		int richtige = worttrainer.getRichtige();
-		int falsche = worttrainer.getFalsche();
+		WortEintrag[] wortliste = wortTrainer.getWortListe().getListe();
+		int richtige = this.wortTrainer.getRichtige();
+		int falsche = this.wortTrainer.getFalsche();
 		writer = new BufferedWriter(new FileWriter(file));
 		writer.write(richtige + System.lineSeparator() + falsche + System.lineSeparator());
-		for (int i = 0; i < wortliste.length; ++i) {
-			writer.write(wortliste[i].getWort() + ";" + wortliste[i].getUrl() + System.lineSeparator());
-		}
-		if (writer != null) {
-			writer.close();
-		}
+		writer.close();
 	} 
     /**
      * speichert die Worteintraege und die Statistik dazu in der angegebenen Datei im Projekt Ordner
      * @param trainer Die Worteintraege und die Statistik
      */
-    public static void speichern(WortTrainer trainer) throws IOException {
-        speichern("WortTrainer.txt", trainer);
+    public void speichern() throws IOException {
+        speichern("WortTrainer.txt");
     }
     /**
 	 * lädt die Worteintraege und die Statistik in der angegebenen Datei
 	 * @param filename Der Pfad zur Datei
 	 * @return Den Worttrainer mit den Daten aus der Datei
 	 */
-    public static WortTrainer laden(String filename) throws IOException {
+    public void laden(String filename) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(filename));
 		String text;
 		int richtige = Integer.parseInt(reader.readLine());
-		int falsche = Integer.parseInt(reader.readLine());		
-		WortTrainer worttrainer = new WortTrainer();
-		worttrainer.addRichtige(richtige);
-		worttrainer.addFalsche(falsche);		
-		while ((text = reader.readLine()) != null) {
-			worttrainer.getWortListe().addWort(new WortEintrag(text.substring(0, text.indexOf(';')), text.substring(text.indexOf(';')+1,text.length())));
-		}
+		int falsche = Integer.parseInt(reader.readLine());
+		wortTrainer.addRichtige(richtige);
+		wortTrainer.addFalsche(falsche);
 		reader.close();
-		return worttrainer;
     }
     /**
 	 * lädt die Worteintraege und die Statistik in der angegebenen Datei im Projekt Ordner
 	 * @param filename Der Pfad zur Datei
 	 * @return Den Worttrainer mit den Daten aus der Datei
 	 */
-    public static WortTrainer laden() throws IOException {
-        return laden("Worttrainer.txt");
+    public void laden() throws IOException {
+        laden("Worttrainer.txt");
     }
 }
