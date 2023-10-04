@@ -52,7 +52,7 @@ public class App {
             do {
                 try {
                     image = new ImageIcon(new URL(neuesWort.getUrl()));
-                    JOptionPane.showMessageDialog(null, "Bisher Richtige: "+trainer.getRichtige()+"\nBisher Falsche: "+trainer.getFalsche()+"\nDer Versuch davor: " + "\nMerk dir dieses Bild genau", "Display Image", JOptionPane.INFORMATION_MESSAGE, image);
+                    JOptionPane.showMessageDialog(null, "Bisher Richtige: "+trainer.getRichtige()+"\nBisher Falsche: "+trainer.getFalsche()+"\nDer Versuch davor: " +VorherigerVersuch+ "\nMerk dir dieses Bild genau", "Display Image", JOptionPane.INFORMATION_MESSAGE, image);
                     antwort = JOptionPane.showInputDialog(null, "Was war das Bild?");
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null,"Fehler");
