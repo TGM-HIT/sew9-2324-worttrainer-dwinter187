@@ -6,5 +6,60 @@ package sew9.worttrainer.dwinter187;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
+
+/*
+ * @author Daniel Winter 5CHIT
+ * TestKlasse für die WortTrainer Aufgabe
+ */
 class AppTest {
+    /*
+     * Testet ob Laden funktioniert
+     */
+    @Test
+    void LadenTest(){
+        WortListe liste = new WortListe();
+        WortTrainer trainer = new WortTrainer(liste);
+        SpeichernUndLaden sul = new SpeichernUndLaden(trainer);
+        try {
+            sul.laden("TestTrainer.txt");
+        } catch (IOException e) {
+            System.out.println("Fehler beim Laden!");
+        }
+        assertEquals(5, trainer.getRichtige());
+        assertEquals(2, trainer.getFalsche());
+    }
+    
+    /*
+     * Testet ob Speichern funktioniert
+     */
+    @Test
+    void SpeichernTest(){
+        WortListe liste = new WortListe();
+        WortTrainer trainer = new WortTrainer(liste);
+        SpeichernUndLaden sul = new SpeichernUndLaden(trainer);
+        try {
+            sul.speichern("TestSpeichern.txt");
+        } catch (IOException e) {
+            System.out.println("Fehler beim Laden!");
+        }
+    }
+    /*
+     * Testet ob das Speichern und Laden funktioniert
+     */
+    @Test
+    void SpeichernUndLadenTest(){
+        WortListe liste = new WortListe();
+        WortTrainer trainer = new WortTrainer(liste);
+        SpeichernUndLaden sul = new SpeichernUndLaden(trainer);
+        try {
+            sul.speichern("TestSpeichern.txt");
+            sul.laden("TestTrainer.txt");
+        } catch (IOException e) {
+            System.out.println("Fehler beim Laden!");
+        }
+        assertEquals(5, trainer.getRichtige());
+        assertEquals(2, trainer.getFalsche());
+    }
+    @Test
 }
