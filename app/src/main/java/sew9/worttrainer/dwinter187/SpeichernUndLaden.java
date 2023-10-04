@@ -27,7 +27,6 @@ public class SpeichernUndLaden{
     public void speichern(String filename) throws IOException {
 		File file = new File(filename);
 		BufferedWriter writer = null;
-		WortEintrag[] wortliste = wortTrainer.getWortListe().getListe();
 		int richtige = this.wortTrainer.getRichtige();
 		int falsche = this.wortTrainer.getFalsche();
 		writer = new BufferedWriter(new FileWriter(file));
@@ -48,7 +47,6 @@ public class SpeichernUndLaden{
 	 */
     public void laden(String filename) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(filename));
-		String text;
 		int richtige = Integer.parseInt(reader.readLine());
 		int falsche = Integer.parseInt(reader.readLine());
 		wortTrainer.addRichtige(richtige);

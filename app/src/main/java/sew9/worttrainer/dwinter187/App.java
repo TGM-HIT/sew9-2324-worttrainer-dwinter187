@@ -43,6 +43,7 @@ public class App {
         boolean spielBeendet = false;
         ImageIcon image;
         String antwort = "";
+        String VorherigerVersuch = "";
 
         JOptionPane.showMessageDialog(null, "Herzlich Willkommen zu meinem Worttrainer");
         while(!spielBeendet) {
@@ -51,7 +52,7 @@ public class App {
             do {
                 try {
                     image = new ImageIcon(new URL(neuesWort.getUrl()));
-                    JOptionPane.showMessageDialog(null, "Merk dir dieses Bild genau", "Display Image", JOptionPane.INFORMATION_MESSAGE, image);
+                    JOptionPane.showMessageDialog(null, "Bisher Richtige: "+trainer.getRichtige()+"\nBisher Falsche: "+trainer.getFalsche()+"\nDer Versuch davor: "+VorherigerVersuch + "\nMerk dir dieses Bild genau", "Display Image", JOptionPane.INFORMATION_MESSAGE, image);
                     antwort = JOptionPane.showInputDialog(null, "Was war das Bild?");
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null,"Fehler");
@@ -70,10 +71,12 @@ public class App {
                     JOptionPane.showMessageDialog(null, "Richtig :)");
                     trainer.addRichtige(1);
                     wortRichtig = true;
+                    VorherigerVersuch = "Richtig";
                 } else {
                     JOptionPane.showMessageDialog(null, "Falsch :(");
                     trainer.addFalsche(1);
                     wortRichtig = false;
+                    VorherigerVersuch = "Falsch";
                 }
             } while (!wortRichtig);
             
