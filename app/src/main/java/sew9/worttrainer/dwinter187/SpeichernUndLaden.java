@@ -57,6 +57,7 @@ public class SpeichernUndLaden{
 		while ((text = reader.readLine()) != null) {
 			worttrainer.getWortListe().addWort(new WortEintrag(text.substring(0, text.indexOf(';')), text.substring(text.indexOf(';')+1,text.length())));
 		}
+		reader.close();
 		return worttrainer;
     }
     /**

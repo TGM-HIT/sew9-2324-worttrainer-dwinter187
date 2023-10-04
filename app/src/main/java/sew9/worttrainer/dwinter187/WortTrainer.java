@@ -116,10 +116,10 @@ public class WortTrainer {
 		return this.ungueltig;
 	}
 	public void addRichtige(int richtig){
-		this.richtig = richtig;
+		this.richtig += richtig;
 	}
 	public void addFalsche(int falsch){
-		this.falsch = falsch;
+		this.falsch += falsch;
 	}
 
 }
