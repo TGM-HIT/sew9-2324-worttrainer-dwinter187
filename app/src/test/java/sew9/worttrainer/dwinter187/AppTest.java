@@ -61,5 +61,4 @@ class AppTest {
         assertEquals(5, trainer.getRichtige());
         assertEquals(2, trainer.getFalsche());
     }
-    @Test
 }
