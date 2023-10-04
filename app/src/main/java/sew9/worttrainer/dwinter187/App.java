@@ -10,7 +10,7 @@ import javax.swing.*;
  * baut die Klassen WortEintrag, WortTrainer und WortListe ein 
  * @author Daniel Winter
  * 
- * @version 14.11.21
+ * @version 04.10.23
  */
 public class App {
     /**
@@ -19,9 +19,9 @@ public class App {
     public static void main(String[] args) {
 
         //Worteintrag
-        WortEintrag worteintrag1 = new WortEintrag("fotograph", "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80");
-        WortEintrag worteintrag2 = new WortEintrag("auge", "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg");
-        WortEintrag worteintrag3 = new WortEintrag("baum", "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg");
+        WortEintrag worteintrag1 = new WortEintrag("Fotograph", "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80");
+        WortEintrag worteintrag2 = new WortEintrag("Auge", "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg");
+        WortEintrag worteintrag3 = new WortEintrag("Baum", "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg");
 
         //Wortliste
         WortListe wortliste1 = new WortListe();
@@ -52,7 +52,7 @@ public class App {
             do {
                 try {
                     image = new ImageIcon(new URL(neuesWort.getUrl()));
-                    JOptionPane.showMessageDialog(null, "Bisher Richtige: "+trainer.getRichtige()+"\nBisher Falsche: "+trainer.getFalsche()+"\nDer Versuch davor: "+VorherigerVersuch + "\nMerk dir dieses Bild genau", "Display Image", JOptionPane.INFORMATION_MESSAGE, image);
+                    JOptionPane.showMessageDialog(null, "Bisher Richtige: "+trainer.getRichtige()+"\nBisher Falsche: "+trainer.getFalsche()+"\nDer Versuch davor: " + "\nMerk dir dieses Bild genau", "Display Image", JOptionPane.INFORMATION_MESSAGE, image);
                     antwort = JOptionPane.showInputDialog(null, "Was war das Bild?");
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null,"Fehler");

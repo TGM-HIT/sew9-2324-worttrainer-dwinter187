@@ -1,9 +1,10 @@
 package sew9.worttrainer.dwinter187;
 import java.util.Random;
 /**
- * checkt Wörter in der Liste 
+ * Die Klasse die die Statistik der Eingaben verwaltet
  * @author Daniel Winter
- * @version 14.11.21
+ * 
+ * @version 04.10.23
  */
 public class WortTrainer {
 

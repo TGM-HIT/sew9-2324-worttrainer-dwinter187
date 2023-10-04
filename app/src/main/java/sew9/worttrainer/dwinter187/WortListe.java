@@ -1,9 +1,9 @@
 package sew9.worttrainer.dwinter187;
 /**
- * erstellt eine Wortliste
+ * Die Wortliste die alle Worteinträge speichert und verwaltet
  * @author Daniel Winter
- * @version 14.11.21
  * 
+ * @version 04.10.23
  */
 public class WortListe {
 

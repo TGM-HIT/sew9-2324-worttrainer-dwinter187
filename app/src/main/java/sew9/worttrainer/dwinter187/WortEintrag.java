@@ -1,5 +1,11 @@
 package sew9.worttrainer.dwinter187;
 
+/**
+ * Die Klasse die einen Worteintrag erstellt 
+ * @author Daniel Winter
+ * 
+ * @version 04.10.23
+ */
 public class WortEintrag {
     private String wort;
 

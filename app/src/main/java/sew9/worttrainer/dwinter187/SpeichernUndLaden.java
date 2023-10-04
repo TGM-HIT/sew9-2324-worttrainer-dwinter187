@@ -8,9 +8,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Die Klasse SpeichernUndLaden
- * @author jschulz
- * @version 04-12-2021
+ * Die Speichern und Laden Klasse um die TXT Dateien zu speichern und zu laden
+ * @author Daniel Winter
+ * 
+ * @version 04.10.23
  */
 public class SpeichernUndLaden{
 	public WortTrainer wortTrainer;
